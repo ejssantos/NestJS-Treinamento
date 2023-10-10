@@ -18,6 +18,16 @@ let CoursesService = class CoursesService {
             resolve(this.courses);
         });
     }
+    getCourse(courseId) {
+        const id = Number(courseId);
+        return new Promise((resolve) => {
+            const course = this.courses.find((course) => course.id === id);
+            if (!course) {
+                throw new common_1.HttpException(`O curso com esse id não existe!`, 404);
+            }
+            resolve(course);
+        });
+    }
 };
 exports.CoursesService = CoursesService;
 exports.CoursesService = CoursesService = __decorate([

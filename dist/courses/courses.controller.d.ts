@@ -3,4 +3,5 @@ export declare class CoursesController {
     private coursesService;
     constructor(coursesService: CoursesService);
     getCourses(): Promise<any>;
+    getCourse(courseId: any): Promise<any>;
 }

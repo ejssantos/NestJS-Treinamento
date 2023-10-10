@@ -5,4 +5,5 @@ export declare class CoursesService {
         description: string;
     }[];
     getCourses(): Promise<any>;
+    getCourse(courseId: any): Promise<any>;
 }
