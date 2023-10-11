@@ -23,7 +23,7 @@ export class CoursesService {
   }
 
   addCourse(course): Promise<any> {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.courses.push(course);
       resolve(this.courses);
     });
@@ -35,8 +35,8 @@ export class CoursesService {
 
   deleteCourse(courseId): Promise<any> {
     const id = Number(courseId);
-    return new Promise(resolve => {
-      const index = this.courses.findIndex(course => course.id === id);
+    return new Promise((resolve) => {
+      const index = this.courses.findIndex((course) => course.id === id);
       if (index === -1) {
         throw new HttpException(`O curso com esse id não existe!`, 404);
       }
@@ -44,5 +44,4 @@ export class CoursesService {
       resolve(this.courses);
     });
   }
-
 }
