@@ -28,6 +28,23 @@ let CoursesService = class CoursesService {
             resolve(course);
         });
     }
+    addCourse(course) {
+        return new Promise(resolve => {
+            this.courses.push(course);
+            resolve(this.courses);
+        });
+    }
+    deleteCourse(courseId) {
+        const id = Number(courseId);
+        return new Promise(resolve => {
+            const index = this.courses.findIndex(course => course.id === id);
+            if (index === -1) {
+                throw new common_1.HttpException(`O curso com esse id não existe!`, 404);
+            }
+            this.courses.splice(index, 1);
+            resolve(this.courses);
+        });
+    }
 };
 exports.CoursesService = CoursesService;
 exports.CoursesService = CoursesService = __decorate([

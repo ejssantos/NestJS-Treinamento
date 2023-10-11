@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Delete, Query, Patch } from '@nestjs/common';
 import { CoursesService } from './courses.service';
+import { CreateCourseDto } from './create-course.dto';
 
 /**
  *  Tipos de requisições:
@@ -24,4 +25,29 @@ export class CoursesController {
       const course = await this.coursesService.getCourse(courseId);
       return course;
   }
+
+  @Post()
+  async addCourse(@Body() createCourseDto: CreateCourseDto) {
+      const course = await this.coursesService.addCourse(createCourseDto);
+      return course;
+  }
+/*
+  @Patch(':courseId')
+  async updateCourse(@Param() { courseId }: ParamsWithId, @Body() course: create-course-dto) {
+    return await this.coursesService.updateCourse(courseId, course);
+  }
+*/
+  @Patch(':courseId')
+  async updateCourse(@Param('courseId') courseId: number, @Body() createCourseDto: CreateCourseDto) {
+    return this.coursesService.updateCourse(courseId, createCourseDto);
+  }
+
+
+  //localhost:3000/courses?nome_do_parametro=valor_do_parametro
+  @Delete()
+  async deleteCourse(@Query() query) {
+    const courses = await this.coursesService.deleteCourse(query.courseId);
+    return courses;
+  }
+
 };
