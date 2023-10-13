@@ -14,7 +14,7 @@ export class CoursesService {
   getCourse(courseId): Promise<any> {
     const id = Number(courseId);
     return new Promise((resolve) => {
-      const course = this.courses.find((course) => course.id === id);
+      const course = this.courses.find(course => course.id === id);
       if (!course) {
         throw new HttpException(`O curso com esse id não existe!`, 404);
       }
@@ -29,14 +29,27 @@ export class CoursesService {
     });
   }
 
-  updateCourse(id: number, courses: UpdateUserDto) {
-    return this.courses.update(id, updateUserDto);
+/* 
+  updateCourse(id: number, course: UpdateUserDto) {
+    return this.courses.update(id, course);
+  }
+*/
+
+  updateCourse(courseId): Promise<any> {
+    const id = Number(courseId);
+    return new Promise((resolve) => {
+      const index = this.courses.findIndex(course => course.id === id);
+      if (index === -1) {
+        throw new HttpException(`O curso com esse id não existe!`, 404);
+      }
+      this.courses.update(courseId);
+    });    
   }
 
   deleteCourse(courseId): Promise<any> {
     const id = Number(courseId);
     return new Promise((resolve) => {
-      const index = this.courses.findIndex((course) => course.id === id);
+      const index = this.courses.findIndex(course => course.id === id);
       if (index === -1) {
         throw new HttpException(`O curso com esse id não existe!`, 404);
       }
