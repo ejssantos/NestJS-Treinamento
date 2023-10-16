@@ -39,10 +39,16 @@ export class CoursesService {
     const id = Number(courseId);
     return new Promise((resolve) => {
       const index = this.courses.findIndex(course => course.id === id);
+
       if (index === -1) {
         throw new HttpException(`O curso com esse id não existe!`, 404);
       }
-      this.courses.update(courseId);
+
+      if (this.courses.title) {
+
+        
+      }
+      
     });    
   }
 
