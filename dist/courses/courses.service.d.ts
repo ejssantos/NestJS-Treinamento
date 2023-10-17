@@ -7,6 +7,6 @@ export declare class CoursesService {
     getCourses(): Promise<any>;
     getCourse(courseId: any): Promise<any>;
     addCourse(course: any): Promise<any>;
-    updateCourse(courseId: any): Promise<any>;
+    updateCourse(courseId: number, courseUpdated: any): Promise<unknown>;
     deleteCourse(courseId: any): Promise<any>;
 }

@@ -1,5 +1,5 @@
 export declare class CreateCourseDto {
-    readonly id: string;
+    readonly id: number;
     readonly title: string;
     readonly description: string;
 }

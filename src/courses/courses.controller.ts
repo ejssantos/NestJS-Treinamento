@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, Query } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import { Controller, Body, Param, Get, Post, Put, Delete, Query } from '@nestjs/common';
 import { CoursesService } from './courses.service';
 import { CreateCourseDto } from './create-course.dto';
 
@@ -31,28 +32,12 @@ export class CoursesController {
       const course = await this.coursesService.addCourse(createCourseDto);
       return course;
   }
-  
-/*
-  @Patch(':courseId')
-  async updateCourse(@Param() { courseId }: ParamsWithId, @Body() course: create-course-dto) {
-    return await this.coursesService.updateCourse(courseId, course);
-  }
-*/
 
   @Put(':courseId')
-  async updateCourse(@Param('courseId') courseId: Number, @Body() createCourseDto: CreateCourseDto) {
-    const course = await this.coursesService.updateCourse(createCourseDto);
-    return course;
-  }
-
-  /*
-  @Patch(':courseId')
-  async updateCourse(@Param('courseId') courseId: number, @Body() createCourseDto: CreateCourseDto) {
+  async update(@Param('courseId') courseId: number, @Body() createCourseDto: CreateCourseDto) {
     return this.coursesService.updateCourse(courseId, createCourseDto);
   }
-  */
 
-  //localhost:3000/courses?nome_do_parametro=valor_do_parametro
   @Delete()
   async deleteCourse(@Query() query) {
     const courses = await this.coursesService.deleteCourse(query.courseId);

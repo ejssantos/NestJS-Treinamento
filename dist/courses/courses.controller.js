@@ -33,9 +33,8 @@ let CoursesController = class CoursesController {
         const course = await this.coursesService.addCourse(createCourseDto);
         return course;
     }
-    async updateCourse(courseId, createCourseDto) {
-        const course = await this.coursesService.updateCourse(createCourseDto);
-        return course;
+    async update(courseId, createCourseDto) {
+        return this.coursesService.updateCourse(courseId, createCourseDto);
     }
     async deleteCourse(query) {
         const courses = await this.coursesService.deleteCourse(query.courseId);
@@ -70,7 +69,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, create_course_dto_1.CreateCourseDto]),
     __metadata("design:returntype", Promise)
-], CoursesController.prototype, "updateCourse", null);
+], CoursesController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(),
     __param(0, (0, common_1.Query)()),
