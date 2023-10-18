@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Controller, Body, Param, Get, Post, Put, Delete, Query } from '@nestjs/common';
-import { ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiOkResponse, ApiResponse } from '@nestjs/swagger';
 import { CoursesService } from './courses.service';
 import { CreateCourseDto } from './create-course.dto';
 
@@ -31,7 +31,13 @@ export class CoursesController {
   }
 
   @Post()
-  @ApiCreatedResponse({description: 'Inclusão de curso.'})
+  @ApiCreatedResponse(
+    {
+      description: 'Inclusão de curso.',
+      type: CreateCourseDto
+    }
+  )
+  @ApiResponse({ status: 403, description: 'Forbidden.'})
   async addCourse(@Body() createCourseDto: CreateCourseDto) {
       const course = await this.coursesService.addCourse(createCourseDto);
       return course;

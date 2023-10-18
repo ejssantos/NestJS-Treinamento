@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CoursesController = void 0;
+const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const courses_service_1 = require("./courses.service");
@@ -46,6 +47,7 @@ exports.CoursesController = CoursesController;
 __decorate([
     (0, common_1.Get)(),
     (0, swagger_1.ApiOkResponse)({ description: 'Lista de cursos.' }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -53,6 +55,7 @@ __decorate([
 __decorate([
     (0, common_1.Get)(':courseId'),
     (0, swagger_1.ApiOkResponse)({ description: 'Busca de cursos.' }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)('courseId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -60,7 +63,12 @@ __decorate([
 ], CoursesController.prototype, "getCourse", null);
 __decorate([
     (0, common_1.Post)(),
-    (0, swagger_1.ApiCreatedResponse)({ description: 'Inclusão de curso.' }),
+    (0, swagger_1.ApiCreatedResponse)({
+        description: 'Inclusão de curso.',
+        type: create_course_dto_1.CreateCourseDto
+    }),
+    (0, swagger_1.ApiResponse)({ status: 403, description: 'Forbidden.' }),
+    openapi.ApiResponse({ status: 201, type: Object }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_course_dto_1.CreateCourseDto]),
@@ -69,6 +77,7 @@ __decorate([
 __decorate([
     (0, common_1.Put)(':courseId'),
     (0, swagger_1.ApiOkResponse)({ description: 'Alteração de curso.' }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)('courseId')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -78,6 +87,7 @@ __decorate([
 __decorate([
     (0, common_1.Delete)(),
     (0, swagger_1.ApiOkResponse)({ description: 'Exclusão de curso.' }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Query)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

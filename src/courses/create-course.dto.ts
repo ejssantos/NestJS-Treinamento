@@ -8,6 +8,11 @@ export class CreateCourseDto {
   @ApiProperty({type: String, description: 'Título do curso.'})
   readonly title: string;
   
-  @ApiProperty({type: String, description: 'Descrição do curso.'})
+  @ApiProperty({
+    type: String,
+    description: 'Descrição do curso.',
+    required: false,
+    example: 'Swagger, do básico ao avançado.'
+  })
   readonly description: string;
 }

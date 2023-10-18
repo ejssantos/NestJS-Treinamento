@@ -10,8 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateCourseDto = void 0;
+const openapi = require("@nestjs/swagger");
 const swagger_1 = require("@nestjs/swagger");
 class CreateCourseDto {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { id: { required: true, type: () => Number }, title: { required: true, type: () => String }, description: { required: true, type: () => String } };
+    }
 }
 exports.CreateCourseDto = CreateCourseDto;
 __decorate([
@@ -23,7 +27,12 @@ __decorate([
     __metadata("design:type", String)
 ], CreateCourseDto.prototype, "title", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ type: String, description: 'Descrição do curso.' }),
+    (0, swagger_1.ApiProperty)({
+        type: String,
+        description: 'Descrição do curso.',
+        required: false,
+        example: 'Swagger, do básico ao avançado.'
+    }),
     __metadata("design:type", String)
 ], CreateCourseDto.prototype, "description", void 0);
 //# sourceMappingURL=create-course.dto.js.map
