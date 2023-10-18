@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CoursesController = void 0;
 const common_1 = require("@nestjs/common");
+const swagger_1 = require("@nestjs/swagger");
 const courses_service_1 = require("./courses.service");
 const create_course_dto_1 = require("./create-course.dto");
 let CoursesController = class CoursesController {
@@ -44,12 +45,14 @@ let CoursesController = class CoursesController {
 exports.CoursesController = CoursesController;
 __decorate([
     (0, common_1.Get)(),
+    (0, swagger_1.ApiOkResponse)({ description: 'Lista de cursos.' }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], CoursesController.prototype, "getCourses", null);
 __decorate([
     (0, common_1.Get)(':courseId'),
+    (0, swagger_1.ApiOkResponse)({ description: 'Busca de cursos.' }),
     __param(0, (0, common_1.Param)('courseId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -57,6 +60,7 @@ __decorate([
 ], CoursesController.prototype, "getCourse", null);
 __decorate([
     (0, common_1.Post)(),
+    (0, swagger_1.ApiCreatedResponse)({ description: 'Inclusão de curso.' }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_course_dto_1.CreateCourseDto]),
@@ -64,6 +68,7 @@ __decorate([
 ], CoursesController.prototype, "addCourse", null);
 __decorate([
     (0, common_1.Put)(':courseId'),
+    (0, swagger_1.ApiOkResponse)({ description: 'Alteração de curso.' }),
     __param(0, (0, common_1.Param)('courseId')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -72,6 +77,7 @@ __decorate([
 ], CoursesController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(),
+    (0, swagger_1.ApiOkResponse)({ description: 'Exclusão de curso.' }),
     __param(0, (0, common_1.Query)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
